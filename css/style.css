@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2e2e2e;
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .flip_button {
+    height: 50px;
+    width: 150px;
+    border: none;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease-in;
+    perspective: 800px;
+  }
+  
+  .flip_button:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .flip_button::after {
+    content: attr(data-subscribe);
+    height: 100%;
+    width: 100%;
+    background-color: #1149a2;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(100%);
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .flip_button::before {
+    content: attr(data-title);
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    color: #1149a2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(0) scale(1.2);
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease-in;
+  }
+  
+  .flip_button[data-icon^="fa-"]::before {
+    font-family: "Font Awesome 6 Free";
+    content: attr(data-icon);
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 1;
+    padding-top: 12px;
+  }
+  
+  .flip_button:hover::after {
+    transform: translateY(0) scale(1.2);
+  }
+  
+  .flip_button:hover::before {
+    transform: translateY(-100%) scale(0) rotate(120deg);
+  }
+  
